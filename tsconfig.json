@@ -1,14 +1,23 @@
 {
     "compilerOptions": {
-        "lib": [],
-        "types": [
+      "target": "esnext",
+      "lib": ["dom", "dom.iterable", "esnext"],
+      "types": [
             "@extism/js-pdk"
         ],
-        "noEmit": true,
-        "resolveJsonModule": true,
-        "esModuleInterop": true,
+      "allowJs": false,
+      "skipLibCheck": true,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "strict": true,
+      "forceConsistentCasingInFileNames": true,
+      "noFallthroughCasesInSwitch": true,
+      "module": "esnext",
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "noEmit": false,
+      "jsx": "react"
     },
-    "include": [
-        "src/**/*"
-    ]
+    "include": [ "src/**/*"]
 }
+  

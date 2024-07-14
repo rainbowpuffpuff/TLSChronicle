@@ -4,6 +4,8 @@ declare module 'main' {
     export function two(): I32;
     export function parseTwitterResp(): I32;
     export function three(): I32;
+    export function four(): I32;
+    export function five(): I32;
     export function config(): I32;
 }
 

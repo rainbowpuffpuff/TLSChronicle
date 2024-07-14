@@ -18,6 +18,17 @@
             "cta": "Notarize",
             "action": "three",
             "prover": true
+        }, {
+            "title": "Re-Collect credentials",
+            "description": "Re-Login to your account if you haven't already",
+            "cta": "Re-Check cookies",
+            "action": "four"
+        },
+        {
+            "title": "Re-Notarize twitter profile",
+            "cta": "Re-Notarize",
+            "action": "five",
+            "prover": true
         }
     ],
     "hostFunctions": [

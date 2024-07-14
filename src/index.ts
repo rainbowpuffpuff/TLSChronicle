@@ -2,6 +2,26 @@ import icon from '../assets/icon.png';
 import config_json from '../config.json';
 import { redirect, notarize, outputJSON, getCookiesByHost, getHeadersByHost } from './utils/hf.js';
 
+let isFinished = false;
+
+
+
+function waitUntilFinished() {
+ 
+  console.log("Function started");  
+  let index = 0;
+  while(index <= 50000000)
+  {
+		index++;
+		let j = 0;
+		for (j = 0; j < 10; j++){
+		
+		}
+  }
+
+  console.log("Function finished, proceeding...");  
+}
+
 /**
  * Plugin configuration
  * This configurations defines the plugin, most importantly:
@@ -73,6 +93,43 @@ export function two() {
   });
 }
 
+export function four() {
+
+  waitUntilFinished();
+
+  const cookies = getCookiesByHost('api.x.com');
+  const headers = getHeadersByHost('api.x.com');
+
+  if (
+    !cookies.auth_token ||
+    !cookies.ct0 ||
+    !headers['x-csrf-token'] ||
+    !headers['authorization']
+  ) {
+    outputJSON(false);
+    return;
+  }
+
+  outputJSON({
+    url: 'https://api.x.com/1.1/account/settings.json',
+    method: 'GET',
+    headers: {
+      'x-twitter-client-language': 'en',
+      'x-csrf-token': headers['x-csrf-token'],
+      Host: 'api.x.com',
+      authorization: headers.authorization,
+      Cookie: `lang=en; auth_token=${cookies.auth_token}; ct0=${cookies.ct0}`,
+      'Accept-Encoding': 'identity',
+      Connection: 'close',
+    },
+    secretHeaders: [
+      `x-csrf-token: ${headers['x-csrf-token']}`,
+      `cookie: lang=en; auth_token=${cookies.auth_token}; ct0=${cookies.ct0}`,
+      `authorization: ${headers.authorization}`,
+    ],
+  });
+}
+
 /**
  * This method is used to parse the Twitter response and specify what information is revealed (i.e. **not** redacted)
  * This method is optional in the notarization request. When it is not specified nothing is redacted.
@@ -102,6 +159,22 @@ export function parseTwitterResp() {
  * Step 3: calls the `notarize` host function
  */
 export function three() {
+  const params = JSON.parse(Host.inputString());
+
+  if (!params) {
+    outputJSON(false);
+  } else {
+    const id = notarize({
+      ...params,
+      getSecretResponse: 'parseTwitterResp',
+    });
+    outputJSON(id);
+  }
+
+  isFinished = true;
+}
+
+export function five() {
   const params = JSON.parse(Host.inputString());
 
   if (!params) {
