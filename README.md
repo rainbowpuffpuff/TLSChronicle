@@ -1,3 +1,14 @@
+#TLSNChronicle 
+
+TLSCertChronicle is a plugin adapted from the twitter plugin example of the TLSNotary project, designed to log & notarize TLS (Transport Layer Security) certificates multiple times. 
+
+The plugin is a proof of concept for demonstrating connections to twitter over time. 
+
+This is a mechanism for demonstrating ongoing access, which is essential for compliance, monitoring, and security auditing purposes. 
+
+In the context of DataDAOs where physiological user data is collected and users want to enrich the value of their data, they could use TLSCertChronicle to provide further proof that they accessed a website during a specific interval, supported by the certificates.
+
+
 # Plugin Development for the TLSNotary Browser Extension
 
 This repository contains the boilerplate code for developing a plugin for the TLSNotary browser extension. Currently, the template includes a TypeScript-based plugin example that proves ownership of a Twitter profile.
